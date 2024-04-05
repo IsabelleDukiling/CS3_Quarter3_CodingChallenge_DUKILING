@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challenge 6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightseagreen;
+        }
+
+        h1, h2, h4 {
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quadratic Formula</h1>
+
+    <h2><button onclick="quadratic()">Find the roots</button></h2>
+    <h4 id="result"></h4>
+
+    <script>
+        function quadratic() {
+            var a = parseFloat(prompt("Enter value of a:"));
+            var b = parseFloat(prompt("Enter value of b:"));
+            var c = parseFloat(prompt("Enter value of c:"));
+
+            var discriminant = b * b - 4 * a * c;
+            var x1, x2;
+
+            if (discriminant > 0) {
+                x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                document.getElementById("result").textContent = "Roots are real and distinct: x1 = " + x1.toFixed(2) + ", x2 = " + x2.toFixed(2);
+            } else if (discriminant === 0) {
+                x1 = x2 = -b / (2 * a);
+                document.getElementById("result").textContent = "Roots are real and equal: x1 = x2 = " + x1.toFixed(2);
+            } else {
+                var realPart = (-b / (2 * a)).toFixed(2);
+                var imaginaryPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+                document.getElementById("result").textContent = "Roots are complex: x1 = " + realPart + " + " + imaginaryPart + "i, x2 = " + realPart + " - " + imaginaryPart + "i";
+            }
+        }
+    </script>
+</body>
+</html>
